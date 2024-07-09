@@ -3,8 +3,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0;
-    padding: 0;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
     background-color: #f1f1f1;
 }
 
@@ -116,7 +116,7 @@ header {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
+    padding: 15px;
     background: linear-gradient(135deg, #343a40, #495057); /* Gradient background */
     color: #ffffff; /* White text color */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
