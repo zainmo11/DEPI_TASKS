@@ -109,6 +109,22 @@ function displayTracks(tracks: Track[]) {
     });
     tableBody.append(data);
 }
+function displayTracksAsCards(tracks: Track[]) {
+    const cardContainer = $('#card-container');
+    cardContainer.empty();
+    tracks.forEach(track => {
+        const card = `
+            <div class="card">
+                <h3 class="card-id">ID: ${track.id}</h3>
+                <p><strong>Name:</strong> ${track.name}</p>
+                <p><strong>Speaker:</strong> ${track.speaker}</p>
+                <p><strong>Time:</strong> ${track.time}</p>
+                <p><strong>Room:</strong> ${track.room}</p>
+            </div>
+        `;
+        cardContainer.append(card);
+    });
+}
 
 // to sort the tracks based on the key
 function sortTracks(key: keyof Track): Track[] {
@@ -155,5 +171,28 @@ $(document).ready(() => {
         const filteredTracks = searchTracks(searchInput);
         displayTracks(filteredTracks);
         console.log(`Search term: ${searchInput}`, filteredTracks);
+    });
+});
+
+$(document).ready(() => {
+    displayTracksAsCards(tracks);
+
+    $('#tasksInput').on('input', (event) => {
+        const target = event.target as HTMLInputElement;
+        const sortBy = target.value as keyof Track;
+        const sortedTracks = sortTracks(sortBy);
+        displayTracksAsCards(sortedTracks);
+    });
+
+    $('#searchButton').on('click', () => {
+        const searchTerm = $('#searchInput').val()?.toString().toLowerCase() || '';
+        const filteredTracks = tracks.filter(track =>
+            track.id.toString().includes(searchTerm) ||
+            track.name.toLowerCase().includes(searchTerm) ||
+            track.speaker.toLowerCase().includes(searchTerm) ||
+            track.time.toLowerCase().includes(searchTerm) ||
+            track.room.toLowerCase().includes(searchTerm)
+        );
+        displayTracksAsCards(filteredTracks);
     });
 });
