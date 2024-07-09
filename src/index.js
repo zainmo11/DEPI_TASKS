@@ -87,6 +87,7 @@ var tracks = [
         room: "Room C",
     }
 ];
+// to display the tracks in the table
 function displayTracks(tracks) {
     var tableBody = (0, jquery_1.default)('#tracks tbody');
     tableBody.empty();
@@ -96,6 +97,15 @@ function displayTracks(tracks) {
     });
     tableBody.append(data);
 }
+function displayTracksAsCards(tracks) {
+    var cardContainer = (0, jquery_1.default)('#card-container');
+    cardContainer.empty();
+    tracks.forEach(function (track) {
+        var card = "\n            <div class=\"card\">\n                <h3 class=\"card-id\">ID: ".concat(track.id, "</h3>\n                <p><strong>Name:</strong> ").concat(track.name, "</p>\n                <p><strong>Speaker:</strong> ").concat(track.speaker, "</p>\n                <p><strong>Time:</strong> ").concat(track.time, "</p>\n                <p><strong>Room:</strong> ").concat(track.room, "</p>\n            </div>\n        ");
+        cardContainer.append(card);
+    });
+}
+// to sort the tracks based on the key
 function sortTracks(key) {
     return tracks.sort(function (a, b) {
         if (a[key] < b[key]) {
@@ -107,13 +117,56 @@ function sortTracks(key) {
         return 0;
     });
 }
+// to search the tracks based on the term
+function searchTracks(term) {
+    term = term.toLowerCase();
+    return tracks.filter(function (track) {
+        return track.id.toString().includes(term) ||
+            track.name.toLowerCase().includes(term) ||
+            track.speaker.toLowerCase().includes(term) ||
+            track.time.toLowerCase().includes(term) ||
+            track.room.toLowerCase().includes(term);
+    });
+}
 (0, jquery_1.default)(document).ready(function () {
     displayTracks(tracks);
     (0, jquery_1.default)('#tasksInput').on('input', function (event) {
         var target = event.target;
         var sortBy = target.value;
+        if (['id', 'name', 'speaker', 'time', 'room'].includes(sortBy)) {
+            var sortedTracks = sortTracks(sortBy);
+            displayTracks(sortedTracks);
+            console.log("Sorted by: ".concat(sortBy), sortedTracks);
+        }
+        else {
+            console.error("Invalid sort key: ".concat(sortBy));
+        }
+    });
+    (0, jquery_1.default)('#searchButton').on('click', function () {
+        var searchInput = (0, jquery_1.default)('#searchInput').val();
+        var filteredTracks = searchTracks(searchInput);
+        displayTracks(filteredTracks);
+        console.log("Search term: ".concat(searchInput), filteredTracks);
+    });
+});
+(0, jquery_1.default)(document).ready(function () {
+    displayTracksAsCards(tracks);
+    (0, jquery_1.default)('#tasksInput').on('input', function (event) {
+        var target = event.target;
+        var sortBy = target.value;
         var sortedTracks = sortTracks(sortBy);
-        displayTracks(sortedTracks);
-        console.log("Sorted by: ".concat(sortBy), sortedTracks);
+        displayTracksAsCards(sortedTracks);
+    });
+    (0, jquery_1.default)('#searchButton').on('click', function () {
+        var _a;
+        var searchTerm = ((_a = (0, jquery_1.default)('#searchInput').val()) === null || _a === void 0 ? void 0 : _a.toString().toLowerCase()) || '';
+        var filteredTracks = tracks.filter(function (track) {
+            return track.id.toString().includes(searchTerm) ||
+                track.name.toLowerCase().includes(searchTerm) ||
+                track.speaker.toLowerCase().includes(searchTerm) ||
+                track.time.toLowerCase().includes(searchTerm) ||
+                track.room.toLowerCase().includes(searchTerm);
+        });
+        displayTracksAsCards(filteredTracks);
     });
 });
