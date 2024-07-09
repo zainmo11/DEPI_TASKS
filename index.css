@@ -122,7 +122,6 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     width: 100%;
     height: 4em;
-    border-radius: 30px;
 }
 
 header a {
@@ -131,6 +130,7 @@ header a {
     font-weight: 500; /* Medium weight for readability */
     margin: 0 15px;
     transition: color 0.3s ease; /* Smooth transition for hover effect */
+    padding-right: 10px;
 }
 
 header a:hover {
