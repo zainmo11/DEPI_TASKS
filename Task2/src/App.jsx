@@ -64,6 +64,7 @@ function App() {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={isNumberKey}
+                readOnly={true}
             />
             <div className="buttons">
                 <button onClick={() => appendNumber('1')}>1</button>
