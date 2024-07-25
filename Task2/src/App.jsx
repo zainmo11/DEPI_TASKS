@@ -6,19 +6,27 @@ function App() {
     const [displayValue, setDisplayValue] = useState('');
     const [currentOperation, setCurrentOperation] = useState('');
     const [operationInProgress, setOperationInProgress] = useState(false);
+    const [afterEqual, setAfterEqual] = useState(false);
 
     const appendNumber = (number) => {
         if (operationInProgress) {
-            setInputValue(number);
+            setInputValue('');
             setOperationInProgress(false);
-        } else {
-            setInputValue((prevValue) => prevValue + number);
         }
+        else if (afterEqual) {
+            setInputValue('');
+            setAfterEqual(false);
+            setDisplayValue('')
+            setCurrentOperation('')
+        }
+        setInputValue((prevValue) => prevValue + number);
     };
 
     const setOperation = (operation) => {
         if (inputValue === '') return;
-        setDisplayValue((prevValue) => `${prevValue} ${inputValue} ${operation}`);
+        if (afterEqual)  setDisplayValue('')
+        setAfterEqual(false);
+        setDisplayValue((prevValue) => prevValue + ` ${inputValue} ${operation}`);
         setCurrentOperation((prevValue) => prevValue + inputValue + operation);
         setInputValue('');
         setOperationInProgress(true);
@@ -27,18 +35,20 @@ function App() {
     const calculateResult = () => {
         if (inputValue === '') return;
         const finalOperation = currentOperation + inputValue;
+        let result;
         try {
-            const result = eval(finalOperation);
+            result = eval(finalOperation);
             if (finalOperation.includes('/0')) {
                 throw new Error('Division by zero');
             }
             setDisplayValue(result.toString());
-            setCurrentOperation('');
+            setCurrentOperation(result.toString());
+            setAfterEqual(true);
         } catch (error) {
             setDisplayValue('Error');
             setCurrentOperation('');
         }
-        setInputValue('');
+        setInputValue(result.toString());
     };
 
     const clearInput = () => {
