@@ -24,7 +24,10 @@ function App() {
 
     const setOperation = (operation) => {
         if (inputValue === '') return;
-        if (afterEqual)  setDisplayValue('')
+        if (afterEqual){
+            setDisplayValue('')
+            setCurrentOperation('')
+        }
         setAfterEqual(false);
         setDisplayValue((prevValue) => prevValue + ` ${inputValue} ${operation}`);
         setCurrentOperation((prevValue) => prevValue + inputValue + operation);
