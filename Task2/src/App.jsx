@@ -9,15 +9,13 @@ function App() {
     const [afterEqual, setAfterEqual] = useState(false);
 
     const appendNumber = (number) => {
-        if (operationInProgress) {
+        if (operationInProgress || afterEqual) {
             setInputValue('');
             setOperationInProgress(false);
-        }
-        else if (afterEqual) {
-            setInputValue('');
-            setAfterEqual(false);
-            setDisplayValue('')
-            setCurrentOperation('')
+            if (afterEqual) {
+                setDisplayValue('')
+                setCurrentOperation('')
+            }
         }
         setInputValue((prevValue) => prevValue + number);
     };
@@ -36,7 +34,7 @@ function App() {
     };
 
     const calculateResult = () => {
-        if (inputValue === '') return;
+        if (inputValue === '' || afterEqual) return;
         const finalOperation = currentOperation + inputValue;
         let result;
         try {
