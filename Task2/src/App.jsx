@@ -48,6 +48,7 @@ function App() {
         } catch (error) {
             setDisplayValue('Error');
             setCurrentOperation('');
+            setAfterEqual(true);
         }
         setInputValue(result.toString());
     };
