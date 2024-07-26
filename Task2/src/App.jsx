@@ -21,6 +21,7 @@ function App() {
     };
 
     const setOperation = (operation) => {
+        if (inputValue ==='Infinity' || inputValue === '-Infinity') return;
         if (inputValue === '') return;
         if (afterEqual){
             setDisplayValue('')
