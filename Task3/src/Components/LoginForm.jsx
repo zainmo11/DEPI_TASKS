@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "../index.css";
+import { Link } from 'react-router-dom';
 const API_URL = 'https://dummyjson.com/auth';
 
 const LoginForm = ({ onLogin }) => {
@@ -78,12 +79,12 @@ const LoginForm = ({ onLogin }) => {
                             </div>
                             <p className="text-center text-sm text-gray-500">
                                 Don't have an account yet?
-                                <a
-                                    href="sign-up"
+                                <Link
+                                    to="/sign-up"
                                     className="font-semibold text-gray-600 hover:underline focus:text-gray-800 focus:outline-none"
                                 >
                                     Sign up
-                                </a>
+                                </Link>
                                 .
                             </p>
                         </form>
