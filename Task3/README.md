@@ -1,8 +1,9 @@
-# React + Vite
+# Authentication Application
+## Overview
+This application consists of three main pages for user authentication and information management:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Login Form: Allows users to log in.
+- Sign Up: Enables users to create a new account. (Note: This Endpoint is for practice purposes only and does not create real user accounts.)
+- User Info: Displays user information and provides a logout option
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## https://zainmo11.github.io/DEPI_TASKS/Task3/dist/index.html
