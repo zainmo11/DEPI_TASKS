@@ -36,12 +36,12 @@ const UserInfo = ({ onLogout }) => {
                     <div className="mt-4 flex flex-col items-center">
                         <img src={userInfo.image} className="mt-4 inline"/>
                        <div className="mt-9 flex flex-col items-start">
-                        <p className="text-gray-500"><span className="font-bold">Name:</span> {userInfo.firstName} {userInfo.lastName}</p>
-                        <p className="text-gray-500"><span className="font-bold">Email:</span> {userInfo.email}</p>
-                        <p className="text-gray-500"><span className="font-bold">Gender:</span> {userInfo.gender}</p>
-                        <p className="text-gray-500"><span className="font-bold">University:</span> {userInfo.university}</p>
-                        <p className="text-gray-500"><span className="font-bold">BirthDate:</span> {userInfo.birthDate}</p>
-                        <p className="text-gray-500"><span className="font-bold">Weight:</span> {userInfo.weight}</p>
+                        <p className="text-gray-500 text-sm md:text-base lg:text-lg "><span className="font-bold">Name:</span> {userInfo.firstName} {userInfo.lastName}</p>
+                        <p className="text-gray-500 text-sm md:text-base lg:text-lg"><span className="font-bold">Email:</span> {userInfo.email}</p>
+                        <p className="text-gray-500 text-sm md:text-base lg:text-lg"><span className="font-bold">Gender:</span> {userInfo.gender}</p>
+                        <p className="text-gray-500 text-sm md:text-base lg:text-lg text-nowrap"><span className="font-bold">University:</span> {userInfo.university}</p>
+                        <p className="text-gray-500 text-sm md:text-base lg:text-lg"><span className="font-bold">BirthDate:</span> {userInfo.birthDate}</p>
+                        <p className="text-gray-500 text-sm md:text-base lg:text-lg"><span className="font-bold">Weight:</span> {userInfo.weight}</p>
                        </div>
                     </div>
                 ) : (

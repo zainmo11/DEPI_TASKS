@@ -22,8 +22,9 @@ const LoginForm = ({ onLogin }) => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="w-full max-w-md bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+            <div
+                className="w-full max-w-md bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10">
                 <div className="w-full">
                     <div className="text-center">
                         <h1 className="text-3xl font-semibold text-gray-900">Sign in</h1>
@@ -41,12 +42,13 @@ const LoginForm = ({ onLogin }) => {
                                     autoComplete="NA"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
+
                                 />
                                 <label
                                     htmlFor="email"
                                     className="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
                                 >
-                                    Email Address
+                                    Username or Email Address
                                 </label>
                             </div>
                             <div className="relative mt-6">
@@ -85,9 +87,13 @@ const LoginForm = ({ onLogin }) => {
                                 .
                             </p>
                         </form>
+
                     </div>
                 </div>
             </div>
+            <h2 className="text-center text-2xl font-semibold text-gray-900">Demo Account</h2>
+            <h2 className="text-center text-sm text-gray-500">Username: emilys</h2>
+            <h2 className="text-center text-sm text-gray-500">Password: emilyspass</h2>
         </div>
     );
 };
